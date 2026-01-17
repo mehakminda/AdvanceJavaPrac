@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:util="http://www.springframework.org/schema/util" xsi:schemaLocation="
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd"> <!-- bean definitions here -->
+
+    <!-- Circular dependency -->
+
+    <!-- Setter injection : during bean creation we do not inject properties
+    so while creating beta bean, we need not have the object of alpha bean-->
+<!--<bean id="beta" class="com.learning.telusko.beans.Beta">
+    <property ref="alpha" name="alpha"></property>
+</bean>
+
+<bean id="alpha" class="com.learning.telusko.beans.Alpha">
+    <property ref="beta" name="beta" ></property>
+</bean>-->
+
+
+
+    <!-- one setter and another constructor injection : this will work fine -->
+    <bean id="beta" class="com.learning.telusko.beans.Beta">
+        <property ref="alpha" name="alpha"></property>
+    </bean>
+
+    <bean id="alpha" class="com.learning.telusko.beans.Alpha">
+        <constructor-arg ref="beta" name="beta" ></constructor-arg>
+    </bean>
+
+
+
+    <!-- Constructor injection : this will fail
+   In contructor injection,  while creating beta bean(target class bean), we need to have the object of alpha bean(dependent object)
+    -->
+  <!--  <bean id="beta" class="com.learning.telusko.beans.Beta">
+        <constructor-arg ref="alpha" name="alpha"></constructor-arg>
+    </bean>
+
+    <bean id="alpha" class="com.learning.telusko.beans.Alpha">
+        <constructor-arg ref="beta" name="beta" ></constructor-arg>
+    </bean>-->
+
+
+</beans>

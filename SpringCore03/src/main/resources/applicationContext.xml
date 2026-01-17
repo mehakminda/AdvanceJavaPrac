@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:util="http://www.springframework.org/schema/util" xsi:schemaLocation="
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd"> <!-- bean definitions here -->
+
+    <!-- We are creating 4 different beans of the same class Employee
+           in each we are passing values to contructor parameters in different ways -->
+    <bean id="emp1" class="com.learning.telusko.beans.Employee">
+        <constructor-arg value="01" />
+        <constructor-arg value="John Doe" />
+        <constructor-arg value="Hyderabad" />
+        <constructor-arg value="50000.0f" />
+    </bean>
+
+    <bean id="emp2" class="com.learning.telusko.beans.Employee">
+        <constructor-arg name="id" value="02" />
+        <constructor-arg name="empName" value="Mehak Minda" />
+        <constructor-arg name="empCity" value="Hyderabad" />
+        <constructor-arg name="empSalary" value="70000.0f" />
+    </bean>
+
+    <bean id="emp3" class="com.learning.telusko.beans.Employee">
+        <constructor-arg index="2" value="Hyderabad" />
+        <constructor-arg index="0" value="03" />
+        <constructor-arg index="1" value="Jalaj Minda" />
+        <constructor-arg index="3" value="60000.0f" />
+    </bean>
+
+
+    <bean id="emp4" class="com.learning.telusko.beans.Employee">
+        <constructor-arg type="java.lang.String" name="empCity" value="Hyderabad" />
+        <constructor-arg type="java.lang.Integer" name="id" value="04" />
+        <constructor-arg type="java.lang.String" name="empName" value="Renu Minda" />
+        <constructor-arg type="java.lang.Float" name="empSalary" value="60000.0f" />
+    </bean>
+
+</beans>

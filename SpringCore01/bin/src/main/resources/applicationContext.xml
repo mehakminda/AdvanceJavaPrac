@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!-- bean definitions here -->
+
+    <bean id="ff" class="com.learning.telusko.bean.FirstFlight" />
+    <bean id="ex" class="com.learning.telusko.bean.FedEx" />
+    <bean id="bd" class="com.learning.telusko.bean.BlueDart" />
+    <bean id="amazon" class="com.learning.telusko.bean.Amazon" >
+        <property ref="ff" name="service"/>
+        <constructor-arg  ref="ex" name="service"/>
+    </bean>
+
+</beans>
