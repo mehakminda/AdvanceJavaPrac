@@ -14,5 +14,6 @@ public class Beta {
 
     public Beta(Alpha alpha) {
         this.alpha = alpha;
+        System.out.println("Beta  Bean Created using parameterized constructor");
     }
 }

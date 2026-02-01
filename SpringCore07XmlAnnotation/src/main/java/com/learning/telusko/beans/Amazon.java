@@ -18,8 +18,7 @@ public class Amazon {
     }
 
     @Autowired
-
-    public Amazon(@Qualifier("ff") DeliveryService service) {
+    public Amazon( @Qualifier("ff") DeliveryService service) {
         this.service=service;
     }//constructor injection
 

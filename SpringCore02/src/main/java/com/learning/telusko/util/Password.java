@@ -1,5 +1,8 @@
 package com.learning.telusko.util;
 
+import org.springframework.stereotype.Component;
+
+@Component
 public class Password {
     public Password(){
         System.out.println("Password obj has been created ");

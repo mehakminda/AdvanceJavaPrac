@@ -8,12 +8,10 @@ public class Employee {
 
 	static {
 		System.out.println("Employee class is loaded ...");
-		
 	}
 
 	public Employee(){
 		System.out.println("Employee bean is created ...");
-
 	}
 
 	public Employee(Integer id, String empName, String empCity, Float empSalary) {
@@ -35,5 +33,4 @@ public class Employee {
 		return "Employee [id=" + id + ", EmpName=" + empName + ", empCity=" + empCity + ", empSalary=" + empSalary
 				+ "]";
 	}
-	
 }

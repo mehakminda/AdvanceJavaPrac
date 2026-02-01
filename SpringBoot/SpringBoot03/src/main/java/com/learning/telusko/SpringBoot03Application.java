@@ -4,11 +4,13 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
 
+import java.util.Arrays;
+
 @SpringBootApplication
 public class SpringBoot03Application { //this class is also instantiated by spring, hence is a bean
 
 	static{
-		System.out.println("Spring Boot 03 App");
+		System.out.println("Spring Boot 03 App is loaded");
 	}
 
 	public SpringBoot03Application(){
@@ -19,7 +21,12 @@ public class SpringBoot03Application { //this class is also instantiated by spri
 
 		ApplicationContext context=SpringApplication.run(SpringBoot03Application.class, args);
 		System.out.println("Spring container used here: "+context.getClass().getName());
-		System.out.println("Beans getting created behind the scene:  ");
+		System.out.println("Beans getting created behind the scene:  "+context.getBeanDefinitionCount());
+		System.out.println("Beans names getting created behind the scene:  "+ Arrays.toString(context.getBeanDefinitionNames()));
+		System.out.println("----------------------------------------------------------");
+
+
+
 	}
 
 }

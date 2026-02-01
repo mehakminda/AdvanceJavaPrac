@@ -24,7 +24,7 @@
     <bean id="amazon" class="com.learning.telusko.beans.Amazon" autowire="no"></bean>-->
 
     <bean id="ff" class="com.learning.telusko.beans.FirstFlight" ></bean>
-    <bean id="bluedart" class="com.learning.telusko.beans.BlueDart" ></bean>
+    <bean id="blueDart" class="com.learning.telusko.beans.BlueDart" ></bean>
     <bean id="fedex" class="com.learning.telusko.beans.FedEx" ></bean>
     <bean id="amazon" class="com.learning.telusko.beans.Amazon" autowire="no">
         <property ref="blueDart" name="service"></property>
