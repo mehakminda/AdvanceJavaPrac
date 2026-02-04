@@ -1,0 +1,20 @@
+CREATE TABLE employee  (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(100) NOT NULL,
+    city VARCHAR(100) NOT NULL,
+    email VARCHAR(100) NOT NULL UNIQUE
+);
+
+Insert into employee (name, city, email) values ('Mehak','Hyderabad', 'mminda@opentext.com');
+Insert into employee (name,city,  email) values ('Jalaj','Bangalore', 'jalajminda@opentext.com');
+Insert into employee (name, city, email) values ('Renu','Hyderabad', 'renuminda@opentext.com');
+Insert into employee (name,city,  email) values ('Manish','New Delhi', 'manishminda@opentext.com');
+
+ALTER TABLE employee ADD salary DOUBLE;
+
+UPDATE employee SET salary = '5000' WHERE name = 'Mehak' and id=1;
+UPDATE employee SET salary = '4000' WHERE name = 'Jalaj' and id=2;
+UPDATE employee SET salary = '6000' WHERE name = 'Renu'and id=4;
+UPDATE employee SET salary = '4000' WHERE name = 'Manish'and id=5;
+
+select * from employee

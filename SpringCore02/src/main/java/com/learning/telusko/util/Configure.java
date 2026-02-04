@@ -23,3 +23,11 @@ public class Configure {
     * use their configuration but copy it and fix it yourself.*/
 
 }
+
+
+/** Copilot
+ * GenerateAlgo was never called then how is it executed?
+ * Spring detects the @Bean method and calls it while building the application context. @Configuration classes are parsed by Spring and each @Bean method is invoked to create and register a bean —
+ * you don't call it directly. In Spring 6 @Bean methods must return a bean object, so change the method to return Password (or use @PostConstruct for side-effect initialization).
+ *
+ */

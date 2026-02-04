@@ -22,3 +22,9 @@ public class SpringBoot04Application {
 	}
 
 }
+
+
+/**
+ * here we are passing qualifier java, but what if we want the user's input. How to we inject to the cpuse field using the user input?
+ * solution in springboot05
+ */

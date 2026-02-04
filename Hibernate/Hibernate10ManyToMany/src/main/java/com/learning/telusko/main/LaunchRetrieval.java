@@ -15,6 +15,7 @@ public class LaunchRetrieval {
         try{
             session= HibernateUtil.getSesssion();
 
+            System.out.println("*******************************");
             Integer id=1;
                 Cart c1 =session.get(Cart.class,id);
                 if(c1!=null){
@@ -29,6 +30,7 @@ public class LaunchRetrieval {
                     System.out.println("No record found with the given id:"+id);
                 }
 
+            System.out.println("*******************************");
                 id=2;
             Cart c2 =session.get(Cart.class,id);
             if(c2!=null){

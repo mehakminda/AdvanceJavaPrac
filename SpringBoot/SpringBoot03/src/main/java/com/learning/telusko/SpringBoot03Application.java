@@ -14,11 +14,12 @@ public class SpringBoot03Application { //this class is also instantiated by spri
 	}
 
 	public SpringBoot03Application(){
-		System.out.println("SpringBoot03Application bean created");
+		System.out.println("SpringBoot03Application bean created"); //is executed after container creation
 	}
 
 	public static void main(String[] args) {
 
+		System.out.println("Starting container");
 		ApplicationContext context=SpringApplication.run(SpringBoot03Application.class, args);
 		System.out.println("Spring container used here: "+context.getClass().getName());
 		System.out.println("Beans getting created behind the scene:  "+context.getBeanDefinitionCount());

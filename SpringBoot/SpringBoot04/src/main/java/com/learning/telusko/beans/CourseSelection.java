@@ -16,11 +16,15 @@ public class CourseSelection {
     @Autowired
     @Qualifier("java")
      Course course; // 3 objects are available that can be injected..ambiguity..
+    /*here we are passing qualifier java, but what if we want the user's input. How to we inject to the course field using the user input??*/
+
 
     public boolean chooseCouse(double amount){
         System.out.println("Time is: "+time);
         return course.selectCourse(amount);
     }
+
+
     public CourseSelection(){
         System.out.println("CourseSelection bean is created");
     }

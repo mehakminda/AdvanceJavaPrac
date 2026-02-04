@@ -19,5 +19,9 @@ public class App
         Password passwd=  context.getBean(Password.class);
         passwd.disp();
 
+
     }
 }
+
+//This code is incorrect , find the error??
+//hint: which password bean is injected in line 19?

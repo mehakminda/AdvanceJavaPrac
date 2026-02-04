@@ -1,5 +1,7 @@
 package com.learning.telusko.dao;
 
+
+//pojo class
 public class CourseInfo {
 
     private Integer cid;

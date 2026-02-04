@@ -9,24 +9,24 @@
 
     <!-- Setter injection : during bean creation we do not inject properties
     so while creating beta bean, we need not have the object of alpha bean-->
-<!--<bean id="beta" class="com.learning.telusko.beans.Beta">
+<bean id="beta" class="com.learning.telusko.beans.Beta">
     <property ref="alpha" name="alpha"></property>
 </bean>
 
 <bean id="alpha" class="com.learning.telusko.beans.Alpha">
     <property ref="beta" name="beta" ></property>
-</bean>-->
+</bean>
 
 
 
     <!-- one setter and another constructor injection : this will work fine -->
-    <bean id="beta" class="com.learning.telusko.beans.Beta">
+<!--    <bean id="beta" class="com.learning.telusko.beans.Beta">
         <property ref="alpha" name="alpha"></property>
     </bean>
 
     <bean id="alpha" class="com.learning.telusko.beans.Alpha">
         <constructor-arg ref="beta" name="beta" ></constructor-arg>
-    </bean>
+    </bean> -->
 
 
 

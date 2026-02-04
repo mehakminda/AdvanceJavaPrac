@@ -5,7 +5,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 public class LaunchApp {
     public static void main(String[] args) {
-        System.out.println("Conatiner started");
+        System.out.println("Container started");
         ClassPathXmlApplicationContext context=new ClassPathXmlApplicationContext("applicationContext.xml");
 
         Voter voter= (Voter) context.getBean("voter");
