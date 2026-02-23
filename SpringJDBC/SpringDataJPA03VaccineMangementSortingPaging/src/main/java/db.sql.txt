@@ -1,0 +1,7 @@
+insert into  testdb.vaccinedetails values (10,"vacc3","Comapany4","14");
+insert into  testdb.vaccinedetails values (1100,"vacc2","Comapany10","15");
+insert into  testdb.vaccinedetails values (12,"vacc1","Comapany6","16");
+
+insert into  testdb.vaccinedetails values (13,"vacc3","Comapany7","17");
+insert into  testdb.vaccinedetails values (14,"vacc2","Comapany8","18");
+insert into  testdb.vaccinedetails values (15,"vacc1","Comapany9","19");
