@@ -6,7 +6,7 @@
         http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd"> <!-- bean definitions here -->
 
     <!-- We are creating 4 different beans of the same class Employee
-           in each we are passing values to contructor parameters in different ways -->
+           in each we are passing values to constructor parameters in different ways -->
     <bean id="emp1" class="com.learning.telusko.beans.Employee">
         <constructor-arg value="01" />
         <constructor-arg value="John Doe" />

@@ -35,6 +35,7 @@ public class LaunchLazy {
 
 
         Student st1= session.load(Student.class, 1);
+       //here query is not re-executed.
         System.out.println("Student id : "+st1.getId());
         System.out.println("Student name : "+st1.getName());
         System.out.println("Student age : "+st1.getAge());

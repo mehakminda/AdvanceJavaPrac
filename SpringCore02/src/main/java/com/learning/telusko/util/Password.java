@@ -4,14 +4,17 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class Password {
+    String algo;
     public Password(){
         System.out.println("Password obj has been created ");
     }
     public Password(String algo){
+     this.algo=algo;
         System.out.println("The password has been created by "+algo);
     }
     public void disp(){
-        System.out.println("Password obj created by dev but its still a bean and is managed by spring container");
+     System.out.println("Algo used is "+algo);
+        System.out.println("Password obj created by dev but its still a bean and is managed by spring container ");
     }
 }
 
@@ -75,7 +78,7 @@ public class Password {
 
  Other important notes
  1. Bean name: by default the bean name is the method name for @Bean (generateAlgo). You can explicitly name it: @Bean("passwordBean").
- 2. Scope: default is singleton. Use @Scope("prototype") if you want new instances per injection.
+ 2. Scope: default is singleton. Use @Scope("prototype") if you want new instances per injection. (A singleton bean means only one instance per Spring ... By default, all Spring beans are singletons unless explicitly defined otherwise
  3. If you both annotate Password with @Component and also register a Password via @Bean with the same name/type, you may get a conflict (duplicate beans) or ambiguity for autowiring. Avoid defining the same bean twice.
  4. Creating objects with new inside configuration means you won't get Spring features unless the object is returned and registered as a bean.
 

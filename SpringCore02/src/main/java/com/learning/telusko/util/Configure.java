@@ -31,3 +31,13 @@ public class Configure {
  * you don't call it directly. In Spring 6 @Bean methods must return a bean object, so change the method to return Password (or use @PostConstruct for side-effect initialization).
  *
  */
+
+/**
+ * Can we add @bean to a class/variable?
+ * NO , @bean can only be added to a method.
+ * @bean is telling spring, hey spring I(developer) am creating this object, But I want you to manage it and consider it a bean.
+ *
+ *
+ * The @Bean annotation is a method-level annotation used within a @Configuration (or @Component) class to explicitly declare that the object returned by that method should be managed by the Spring IoC container
+ *
+ */

@@ -33,7 +33,7 @@ public class SpringDataJpa01Application {
 
 /**
  * all implementation done by spring data jpa, we just make one function call
- *  we need write any query/ crud operation login, / get any connection object/ initialse driver/ user jdbc template .. all this is already done by spring data jpa
+ *  we need not write any query/ crud operation login, / get any connection object/ initialse driver/ user jdbc template .. all this is already done by spring data jpa
  *  100% abstraction
  */
 

@@ -47,3 +47,7 @@ public class LaunchApp1 {
     }
 }
 // no loading driver/creating statement/writing sql query.... all these eliminated
+
+//save will give error if the , property is update, <property name="hibernate.hbm2ddl.auto">update</property>
+// Duplicate entry '1' for key 'students.PRIMARY'
+

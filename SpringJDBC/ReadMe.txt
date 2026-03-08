@@ -8,7 +8,9 @@ You can select only a few columns or a specific Data Transfer Object (DTO), rath
 finder method(Derived Query Methods):  For basic CRUD operations or simple conditional searches
 
 ------------------------------------------------------------------------------------------------------------------
-when to use crudrepository and when to use jpa repository
+when to use crudrepository and when to use jpa repository?
+
+Use the CrudRepository when you only require basic Create, Read, Update, and Delete operations and desire a generic, persistence-agnostic interface. Use the JpaRepository (which extends CrudRepository) when you need additional JPA-specific features like pagination, sorting, batch operations, or immediate flushing of the persistence context. 
 
 
 ------------------------------------------------------------------------------------------------------------------

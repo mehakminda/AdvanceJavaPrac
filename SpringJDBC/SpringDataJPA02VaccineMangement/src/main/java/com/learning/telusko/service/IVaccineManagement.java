@@ -5,6 +5,7 @@ import com.learning.telusko.bo.VaccineDetails;
 import java.util.List;
 import java.util.Optional;
 
+//adopting code to interface strategy
 public interface IVaccineManagement {
 
     public String registerVaccineDetails(VaccineDetails vaccine);

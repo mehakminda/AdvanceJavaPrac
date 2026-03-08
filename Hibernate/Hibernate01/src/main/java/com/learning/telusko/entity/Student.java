@@ -8,6 +8,8 @@ import jakarta.persistence.Table;
 
 //This is a entity/model/pojo class which will be mapped to a table in database
 //All the below annotation are coming from JPA
+//ORM: Object-Relational Mapping :  It acts as a bridge between object-oriented code (e.g., Python, Java) and relational database tables.
+//By using ORM, developers can interact with databases using code objects instead of writing raw SQL queries
 
 @Entity //states that this class is mapped to a table in database
 @Table(name="students")

@@ -55,3 +55,15 @@ public class LaunchApp1 {
     }
 }
 // no loading driver/creating statement/writing sql query.... all these eliminated
+
+/**
+ *  saveAndUpdate: is first a select query and if  found same then ignore, if found but is different then update, if not found then insert query
+ */
+
+
+/**
+ * property: create  method : save - adds new row
+ * property: update method: save - if found then gives error, if not found then adds
+ * property: update method: saveAndUpdate - if found then skips.
+ *
+ */

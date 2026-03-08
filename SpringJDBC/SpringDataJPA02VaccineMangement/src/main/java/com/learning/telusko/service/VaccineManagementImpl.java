@@ -105,7 +105,7 @@ public class VaccineManagementImpl implements IVaccineManagement{
 /**
  *  jdk.proxy2.$Proxy105 persistence logic is developed by proxy class
  *
- *  crudReporistory is an interface then who is implmenting those methods, spring is initialising the methos using the proxy class.
+ *  crudRepository is an interface then who is implementing those methods, spring is initialising the methods using the proxy class.
  *
  *  In Spring Data JPA, the CrudRepository interface is not implemented by you or your code directly. Instead, Spring Data JPA automatically generates a proxy class at runtime that implements all the methods of CrudRepository for your entity (in this case, VaccineDetails).
  */

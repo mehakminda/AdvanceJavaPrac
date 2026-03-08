@@ -2,7 +2,7 @@ package com.learning.telusko.dao;
 
 import org.springframework.stereotype.Component;
 
-@Component
+@Component //this is actually not needed i think
 public class Employee {
     private Integer id;
     private String name;
