@@ -1,0 +1,42 @@
+
+what is JWT Token?
+what are different authentication mechanism
+what are different grant types: password, client_credentials,
+what is refresh token and access token.
+is access token an refresh token a JWT token?
+
+--------------------------------------------------------------------------------------------------
+Access Token and refresh Tokens
+
+When make an authentication call, Both access token and refresh token are generated.
+Access Token are short lived when compared to refresh token.
+
+So, when we make call(get) to an API, we pass the access token in header.
+ -> if the access token is valid we get valid response.
+ -> if access token is invalid/expired we get 401 error code
+
+So, now incase of 401, we pass the refresh token.
+  -> if the refresh token was valid, then we would get valid response and the access token is also re-generated
+  -> if the refresh token is also invalid/expired, then we would get 401 error code.
+
+--------------------------------------------------------------------------------------------------
+JWT token:(JSON Web Token) is used for securely transmitting information between parties as a JSON object. It is commonly used for authentication and authorization in web applications.
+
+  It is URL-safe and can be easily transmitted via HTTP headers or query parameters.
+  Self-contained: It carries all the necessary information about the user, so no need to query the database repeatedly.
+  Signed: Ensures integrity and authenticity using a secret key (HMAC) or public/private key pair (RSA or ECDSA).
+
+  ->A JWT consists of three parts, separated by dots (.): Header.Payload.Signature 
+    Header: Specifies the type of token and the signing algorithm.
+    Payload: Contains the claims (data), such as user info and token expiration.
+    Signature: Created by encoding the header and payload, then signing with a secret key.
+
+   Use Case: Authentication, Information exchange between services, Stateless session management
+
+
+
+Access Token and Refresh Token can be JWTs, but they are not always JWTs. It depends on the implementation.
+Access Token → Often a JWT (but not guaranteed).
+Refresh Token → Usually opaque tokens (random strings)(as It doesn’t need to carry user info.), but can be JWT.
+
+--------------------------------------------------------------------------------------------------

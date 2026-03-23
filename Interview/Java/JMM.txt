@@ -1,0 +1,140 @@
+JMM: https://www.youtube.com/watch?v=vz6vSZRuS2M&list=PL6W8uoQQ2c63f469AyV78np0rbxRFppkx&index=10
+
+Write a blog on JMM
+
+New points:
+
+Stack and Heap in RAM
+
+
+string literals are present in string constant pool and string constant pool is in heap memory
+string s="abc";
+s in stack (string literal reference)
+abc in heap
+
+String s1=new String("mehak")
+
+
+a new frame is created for method/functions in stack
+
+is we have another
+String s2="abc"
+s2 in stack (string literal reference) pointing to same abc as before 
+(s and s2 are pointing to same abc)
+
+String s3=new String('abc');
+//this not string literal, this is string object(as new is used)
+a new obejct of type string is created in heap outside string constant pool
+s3 ref is in stack
+
+} -> close stck frame, delete scope, delete all the reference variable in stack .
+
+Objects in heap are left and is cleaned by Garbage collector
+System.gc(); -> run GC..GC scans for heap for objects with no references
+JVM decides the execution of GC
+gc is also called as automatic memory management
+
+Conclusion so far : heap stores the object and stack stores reference of object
+
+Strong and weak refrence:
+
+Striong: Person p=new Person();
+Weak:  WeakPerson<Person> p = new WeakPerson<Person>(new Person())
+->in above statement we are creating a wrapper around a Person object using a class called WeakPerson
+WeakPerson<Person> means you're using a generic class WeakPerson with Person as the type parameter
+
+to above we can also pass : WeakPerson<Apple> p = new WeakPerson<Apple>(new Apple());
+Because The WeakPerson class is generic and can accept any type — not just Person.
+
+WeakPerson<Person> p = new WeakPerson<Person>(); ->
+Creates an empty wrapper, possibly to be set later.
+this means creating a new instance of the generic class WeakPerson without passing a Person object to its constructor
+
+What is meant by creating a wrapper?
+In programming, creating a wrapper means building a class or object that encapsulates another object — like putting it inside a container — to add extra functionality, control access, or modify behavior.
+
+Think of a wrapper like a gift box:
+
+-The actual gift is the object (e.g., Person, Apple).
+-The box (wrapper) holds the gift and might add a label, protection, or instructions.
+-You can interact with the box to get the gift, but the box might also do other things (like log access or delay opening).
+
+if it was : WeakPerson<Apple> p = new WeakPerson<>(new Apple());
+
+We are wrapping the Apple object inside a WeakPerson object. This wrapper might:
+-Hold a weak reference to the Apple object.
+-Provide methods like get() to access it.
+-Allow the object to be garbage collected if no strong references exist.
+
+Usecases :
+Memory management:	Using WeakReference to avoid memory leaks.
+Adding behavior: Logging every time an object is accessed.
+Security:	Restricting access to sensitive data.
+
+compare wrapper vs original object	
+benefits of java wrapper
+
+
+
+
+
+----------------------------------------------------------------------------------------------
+TEXT FROM VIDEO:
+
+
+Stack Memory:
+
+- Store Temporary Variables and separate memory block for methods.
+- Store Primitive data types
+- Store Reference of the heap objects
+	. Strong reference
+	· Weak reference
+		Soft reference
+- Each thread has its own Stack memory.
+- Variables within a SCOPE is only visible and as soon as any variable goes out of the SCOPE, it get deleted from the Stack (in LIFO order)
+- When Stack memory goes full, its throws "java.lang.StackOverflowError"
+
+
+Heap Memory:
+
+Store Objects.
+There is no order of allocating the memory.
+Garbage Collector is used to delete the unreferenced objects from the heap.
+ ->Mark and sweep Algorithm
+ ->Types of GC:
+	Single GC
+	Parallel GC
+	CMS (concurrent Mark Sweep)
+	G1
+Heap memory is shared with all the threads.
+Heap also contains the String Pool.
+When Heap memory goes full, its throws "java.lang.OutofMemoryError"
+Heap memory is further divided into:
+	->Young Generation (minor GC happens here)
+		Eden
+		Survivor
+Old/Tenured Generation (major GC happens here)
+Permanent Generation
+
+
+CODE:
+
+public class MemoryManagement {
+
+    public static void main(String args[]) {
+
+        int primitiveVariable1 = 10;
+        Person person0bj = new Person();
+        String stringLiteral = "24";
+        MemoryManagement memObj = new MemoryManagement();
+        memObj.memoryManagementTest(person0bj);
+    }
+
+    private void memoryManagementTest(Person person0bj) {
+
+        Person person0bj2 = person0bj;
+        String stringLiteral2 = "24";
+        String stringLiteral3 = new String(original:"24");
+
+    }
+}

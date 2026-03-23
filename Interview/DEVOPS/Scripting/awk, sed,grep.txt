@@ -1,0 +1,18 @@
+AWK:
+
+awk is a powerful command line utility for text manipulation. It reads input line by line, splits each line into fields (by default, whitespace), and allows you to apply actions based on     patterns.
+
+SYNTAX: awk 'pattern {action}' file
+     pattern: A condition to match (optional).
+     action: What to do when the pattern matches (optional).
+
+$0 → Entire line
+$1, $2, … → First, second, etc., fields
+NF → Number of fields in the current line
+NR → Current line number
+
+>awk '{print}' file.txt
+>awk '{print $1}' file.txt : Print the first column of a file
+>awk '{print $2 $3}' file.txt : Print the second and third column of the file
+>awk -F',' '{print $1, $2}' file.csv: Set field separator 
+>awk '{print NR, $0}' file.txt: Print line numbers

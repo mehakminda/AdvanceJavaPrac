@@ -1,0 +1,108 @@
+what is different between application/x-www-form-urlencoded, application-octet and multipart/form-data?...Done
+what is difference between stream and blob...done
+what byte encoded..done
+what is bytestream?..done
+what is base64 encoded...done
+what is blob and cblob...done
+Difference between bits, bytes and binary...
+
+query param and path param
+
+
+what is difference between cookie and token
+
+-----------------------------------------------------------------
+from copilot
+
+These are Content-Type headers used in HTTP requests to indicate how the request body is formatted
+
+->application/x-www-form-urlencoded: Simple form data. Spaces become +, special characters are percent-encoded. -> @RequestParam String nam
+   eg:  name=Mehak&role=QA&location=Hyderabad
+->application-octet: Raw binary data(not encoded). File uploads or sending non-text data (e.g., images, PDFs). -> @RequestBody byte[] fileData
+->multi-part/form-data: Mixed content (text + files). Used when a form includes file uploads along with text fields.  Data is split into multiple parts, 
+   each with its own headers and content.  ->@RequestParam("username") String username, @RequestParam("file") MultipartFile file
+->application/json: Sending structured data in JSON format (key-value pairs, arrays, nested objects. ->@RequestBody User use
+
+
+
+application/x-www-form-urlencoded :Simple form data
+multipart/form-data: Form + file uploads
+application/octet-stream: Raw binary data
+application/json: Structured JSON data
+text/plain: Plain text
+application/xml: XML data
+
+-----------------------------------------------------------------
+what is Raw binary data, base 64 encoding,  byte encoding?
+->Raw Binary Data: 
+    It refers to data represented in its original binary form (0s and 1s) without any encoding or transformation into human-readable formats like text or JSON.
+    Sequence of bytes (0s and 1s). Original bytes of the file/data
+    eg: 01001000 01100101... (binary)
+-> Why use raw binary?
+    More efficient (smaller size, faster transfer).
+	Common in file uploads, streaming, and binary protocols.
+	
+->Base 64 encoding:
+  Converts binary data into text representation using 64 characters (A–Z, a–z, 0–9, +, /).
+  Text-based representation of binary data
+  eg: SGVsbG8= (Base64 for "Hello")
+ 
+
+->Why use Base64?
+  Some protocols (like JSON or XML) only allow text, not raw binary.
+  Base64 ensures binary data can be safely transmitted in text-based systems.
+
+-> Byte encoding:
+     Converts text characters into a sequence of bytes using a specific encoding scheme (UTF-8, UTF-16, ASCII).
+
+
+-----------------------------------------------------------------
+Key Differences
+
+Raw Binary: Already in byte form (no conversion needed).
+Base64: Converts binary → text (for embedding in JSON/XML).
+Byte Encoding: Converts text → bytes (using UTF-8, UTF-16, etc.).
+
+---------------------------------------------------------------------------
+Binary String: "01000001 01000010 01000011"
+Byte Array: 65 66 67 
+Decoded Text: ABC
+
+---------------------------------------------------------------------------
+What is stream and Blob:
+
+->Stream:
+  A stream is a sequence of data elements made available over time. It allows reading or writing data continuously rather than loading everything at once.
+
+
+->Blob ((Binary Large Object)):
+   Binary data stored in a single entity typically a database/file system
+   
+   
+**A Blob can be read using a Stream (e.g., blob.getBinaryStream() in JDBC).
+Streams are about data transfer, Blobs are about data storage.
+
+---------------------------------------------------------------------------
+What is byte stream?
+   A Byte Stream in Java is a stream that handles raw binary data (bytes).
+   It is used for reading and writing binary files like images, audio, video, or any non-text data.
+  
+->Byte Streams :Deals with binary data.  
+->Character Streams: Deals with text data (characters).
+->Piped Streams: For inter-thread communication.
+->Buffered Streams: Improve performance by reducing disk I/O.
+->Data Streams: (DataInputStream, DataOutputStream) for reading/writing primitive data types.
+->Object Streams: (ObjectInputStream, ObjectOutputStream) for serialization of objects.
+->Print Streams: (PrintStream) for formatted output.
+
+
+---------------------------------------------------------------------------
+
+BLOB and CLOB are both data types used for storing large objects in databases, but they differ in the type of data they store. BLOB (Binary Large Object) stores binary data like images and videos, while CLOB (Character Large Object) stores large blocks of character or text data, such as XML or PDF documents. The key distinction is that BLOBs treat data as a stream of bytes, while CLOBs treat it as character data that can be converted to different encodings. 
+----------------------------------------------------------------------------------------------------------------
+
+----------------------------------------------------------------------------------------------------------------
+Bit byte binary
+
+----------------------------------------------------------------------------------------------------------------
+

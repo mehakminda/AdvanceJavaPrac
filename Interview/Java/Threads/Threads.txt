@@ -1,0 +1,77 @@
+Blog on Threads:
+
+1. What is thread
+2. why do we need threads? What is default thread
+3. How to create threads (Thread class and runnable Interface)
+4. Thread properties (name, priority, is alive, join, current thread)
+5. Synchronize: synchronized keyword, wait(), notify(), notifyAll(), ReentrantLock, Condition.
+6. Inter-Thread communication:  wait and notify, producer consumer problem
+
+Context Switching: Application switching in order to complete execution
+
+Thread : Is an independent line of execution 
+In JVM, a 'Runtime Stack' area is present, any method for execution will be brought to this stack area and a stack frame is created for that method. In stack area there is a line of execution(thread), which will run through this frame and execute the program.
+
+Pic: By default, there is 1 line of execution/thread which is present only in main stack.
+For each thread we create, a sepearte stack frame is created in Stack Area with respective threads acting as line of execution and 
+Pic : In order to create custom threads/new line of execution we use Thread class/Runnable Interface(it is a functional interface, has only 1 abstract function ie the run() method).
+When we create an object of thread class a stack frame and thread is created.
+The new thread is created by us and then thread is handed over to thread scheduler by calling start() method. This thread scheduler gives life to it.
+Name, priority and which threads to execute will all be handled by Thread scheduler.
+
+Thread scheduler ensures that CPU's time cycle is utilized efficiently. If there is a delay of 0.5 nano sec during an execution by some thread. It will change the executing thread.
+
+Concurrency problem/Race condition: Multiple threads trying to access a single resource at a same time/concurrently.
+Hence we used synchronization, with which only one thread can access the resource at a time. Only one first thread completes its execution then the next thread accesses the resource. Used to lock resources. When a thread is waiting for a resource it goes in blocked state.
+Although there are multiple threads, but at any given time only 1 thread will be in running state.
+
+
+Synchronized can be added to a method or block.
+Synchronized is thread safe ie multiple threads cannot run it ie concurrency is not possible.
+string buffer is thread safe, while string builder is not.
+
+No, you cannot directly apply the synchronized keyword to a variable
+
+Deadlock:
+Inter thread communication using wait and notify
+
+Life cycle of a Thread : New, Runnable, Running, Blocked, Waiting, Timed Waiting, Terminated states.
+Thread object is created -> New state
+Thread.start() -> Thread is handed to Thread scheduler. Its in runnable/ready state
+Thread.run() -> running state (Although there are multiple threads, but at any given time only 1 thread will be in running state. )
+Thread task is finished ->  dead/terminated state
+Thread.sleep ->   sleep state
+ 
+
+1. Thread scheduler
+Life cycle of a Thread : New, Runnable, Running, Blocked, Waiting, Timed Waiting, Terminated states.
+
+
+
+
+Concurrency Utilities: ExecutorService, Callable, Future, CountDownLatch, CyclicBarrier, Semaphore.
+Thread Safety: Handling shared resources, race conditions, deadlocks, and livelocks.
+Inter-thread Communication: Using shared variables, wait/notify, and BlockingQueue.
+
+
+Interview questions:
+1. Why do we call start method and not run method in java. What would happen if we call the run method
+2. Which class do wait/notify belong to .. Object class
+3. Volatile vs synchronize vs static
+
+
+
+Volatile: It's used to prevent threads caching variables when they're not changed from within that thread, https://www.geeksforgeeks.org/java/volatile-keyword-in-java/
+The volatile keyword's purpose is to ensure visibility of variable modifications across different threads by preventing caching of the variable's value and ensuring it is always read from and written to main memory. This mechanism applies to the state of a variable, not to the execution of a method.
+The volatile keyword cannot be applied to a method in Java. It can only be applied to fields(instance variables or static variables) of a class
+
+
+
+
+Daemon Thread: A thread that runs in background/ in the last/low priority thread
+Use infinite loop for daemon thread execution logic.
+Runs as long as main thread is running, and usually the last step of execution.
+Garbage collection is a daemon thread.
+
+Race Condition: When multiple threads is accessing a shared data simultaneously
+can be prevented by using synchronized word
