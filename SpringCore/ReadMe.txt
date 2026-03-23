@@ -12,7 +12,7 @@ SpringCore10 ->
 SpringCore11 -> 
 
 
-
+----------------------------------------------------------------------------------------------------------------------
 SpringBoot01 ->
 SpringBoot02 ->
 SprintBoot03 ->
@@ -22,7 +22,7 @@ instead of qualiafier deciding which bean to inject, asking user input from user
 
 Same project as above but asking for user input for selecting the course name and based on that injection will happen 
 
-
+----------------------------------------------------------------------------------------------------------------------
 SpringJDBC01 -> Spring boot+ JDBC API +My sql driver
 
 Problem: We still need to write the get connect, create statement objects..
@@ -39,3 +39,9 @@ Problem: queries are hardcoded
 
 SpringJDBC03 ->
 SpringJDBC04 ->
+
+----------------------------------------------------------------------------------------------------------------------
+Servlet:
+
+----------------------------------------------------------------------------------------------------------------------
+SpringMVC01 -> spring web+ 
