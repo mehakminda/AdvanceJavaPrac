@@ -17,10 +17,10 @@ public class Amazon {
         System.out.println("Amazon class object is instantiated");
     }
 
-//    @Autowired
-//    public Amazon(@Qualifier("bluedart") DeliveryService service) {
-//        this.service=service;
-//    }//constructor injection
+    @Autowired
+    public Amazon(@Qualifier("bluedart") DeliveryService service) {
+        this.service=service;
+    }//constructor injection
 
 
    /* public Amazon( DeliveryService service) {

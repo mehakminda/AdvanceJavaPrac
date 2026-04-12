@@ -1,0 +1,15 @@
+{
+  "id": 2,
+  "name": "Mehak",
+  "city": "India",
+  "active": true,
+  "course": {
+    "cid": "1",
+    "cname": "DSA",
+    "instructorName": "TakeyouForward",
+    "price": 100
+  },
+  "skills" : ["Java","DSA","DP","AI"],
+  "hobbies": ["Painting","Reading","Driving","Cooking"]
+
+}
