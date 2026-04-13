@@ -5,8 +5,6 @@ public class Implementer {
     private String name;
     private String city;
 
-
-
     public Integer getId() {
         return id;
     }

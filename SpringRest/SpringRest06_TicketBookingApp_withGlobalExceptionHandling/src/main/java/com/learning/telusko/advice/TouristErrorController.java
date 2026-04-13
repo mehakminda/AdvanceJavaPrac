@@ -11,6 +11,7 @@ import java.time.LocalDateTime;
 @RestControllerAdvice //**** tells the controller that I will handle all the exception for you
 //we dont mention anywhere else that this class will handle exception from service to controller
 //just by this annotation it mean this will handle exception for controller
+
 public class TouristErrorController {
 
     @ExceptionHandler(Exception.class)// what type of exception is it handling (ie) Exception class

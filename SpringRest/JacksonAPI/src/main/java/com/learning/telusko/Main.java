@@ -12,14 +12,10 @@ public class Main {
     static void main() throws JsonProcessingException {
 
         //Java object to json
-
-
         Implementer impl= new Implementer();
         impl.setId(1);
         impl.setName("Mehak");
         impl.setCity("USA");
-
-
 
         //print the same in json by using jackson
         ObjectMapper objectMapper= new ObjectMapper();

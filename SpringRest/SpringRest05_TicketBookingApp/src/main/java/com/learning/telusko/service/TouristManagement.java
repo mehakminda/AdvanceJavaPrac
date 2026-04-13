@@ -55,6 +55,10 @@ public class TouristManagement implements ITouristManagement{
     @Override
     public String updateCityById(Long id, String newCity) {
         Optional optional = repo.findById(id);
+        //How does it know that it has to return Tourist object?
+        //because this repo object is of ITouristRepo which has Tourist in its generics <>.
+        //We will have seperate repository for each entity
+
         if(optional.isPresent()){
             Tourist tourist = (Tourist) optional.get(); //gives tourist object
             tourist.setCity(newCity); //changing in object

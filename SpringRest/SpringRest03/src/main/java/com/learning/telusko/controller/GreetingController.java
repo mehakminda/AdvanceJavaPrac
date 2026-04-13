@@ -43,10 +43,10 @@ public class GreetingController {
  * we added only spring boot starter and spring web dependency , so from where did jackson come?
  * it comes from spring internally
  *
- * jackson api is a json parser, that converts java object -> json(vide versa)
+ * jackson api is a json parser, that converts java object -> json(vice versa)
  *
  * JSON: javascript object notation
- * compared to xml jason is light wieght.
+ * compared to xml jason is light weight.
  */
 
 /**

@@ -11,7 +11,6 @@ public class Main2 {
     static void main() throws IOException {
         //Json object to Java object
 
-
         //Create ObjectMapper
         ObjectMapper mapper = new ObjectMapper();
 
