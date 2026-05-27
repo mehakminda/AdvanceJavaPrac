@@ -1,0 +1,13 @@
+use testdb;
+
+create table users(
+    id int primary key,
+    username varchar(255) not null,
+    password varchar(255) not null
+);
+
+Insert into users values(1, 'madhav', 'Password123');
+Insert into users values(2, 'jalaj', 'Password123');
+
+update testdb.users set password = '$2a$12$KKkepU0MBM..CQ4d5RHhyuEBX0gLlNSTa74A67fFpuR.li0aLb3Zi' where id = 3;
+(get bcrypt hash value from : https://bcrypt-generator.com/ with password as '1234' and salt rounds as 12)

@@ -18,7 +18,7 @@ public class Amazon {
     }
 
     @Autowired
-    public Amazon(@Qualifier("bluedart") DeliveryService service) {
+    public Amazon(@Qualifier("blueDart") DeliveryService service) {
         this.service=service;
     }//constructor injection
 
@@ -30,7 +30,7 @@ public class Amazon {
 
     @Autowired
 
-    public void setService ( @Qualifier("ff")DeliveryService service){
+    public void setService ( @Qualifier("firstFlight")DeliveryService service){
         this.service=service;
     } //setter injection
 

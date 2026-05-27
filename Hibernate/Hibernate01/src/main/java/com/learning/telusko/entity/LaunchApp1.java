@@ -46,6 +46,7 @@ public class LaunchApp1 {
         sessionFactory.close();
     }
 }
+
 // no loading driver/creating statement/writing sql query.... all these eliminated
 
 //save will give error if the , property is update, <property name="hibernate.hbm2ddl.auto">update</property>

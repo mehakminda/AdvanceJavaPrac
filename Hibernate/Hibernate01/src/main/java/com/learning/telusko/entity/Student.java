@@ -28,7 +28,7 @@ public class Student {
     @Column(name="sage")
     private Integer age;
 
-    //Hibernate expects a zero parameterised constructor
+    //****Hibernate expects a zero parameterised constructor ******
     public Student() {
         System.out.println("No-args constructor required for internal use of hibernate");
     }

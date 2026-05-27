@@ -1,0 +1,10 @@
+use testdb;
+
+create table users(
+    id int primary key,
+    username varchar(255) not null,
+    password varchar(255) not null
+);
+
+Insert into users values(1, 'madhav', 'Password123');
+Insert into users values(2, 'jalaj', 'Password123');

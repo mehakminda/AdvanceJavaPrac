@@ -12,7 +12,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class VaccineManagementImpl implements IVaccineManagement{
+public class  VaccineManagementImpl implements IVaccineManagement{
 
     @Autowired
     private IVaccineRepository repo; //bean will be created by spring

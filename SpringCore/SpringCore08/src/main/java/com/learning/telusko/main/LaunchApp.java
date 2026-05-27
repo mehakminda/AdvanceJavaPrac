@@ -9,7 +9,7 @@ public class LaunchApp {
         ClassPathXmlApplicationContext context=new ClassPathXmlApplicationContext("applicationContext.xml");
 
         Voter voter= (Voter) context.getBean("voter");
-        voter.checkEligibility();
+        System.out.println(voter.checkEligibility());
 
         context.close();
         System.out.println("Container is stopped");

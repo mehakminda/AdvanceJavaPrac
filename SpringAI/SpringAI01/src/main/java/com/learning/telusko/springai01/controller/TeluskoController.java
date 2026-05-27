@@ -69,10 +69,12 @@ public class TeluskoController {
     //method2: chat client, with memory
     @GetMapping("/api/answer4/{message}")
     public ResponseEntity getAnswer4(@PathVariable String message){
-        ChatResponse chatResponse = chatClient2.prompt(message).call().chatResponse();
+        ChatResponse chatResponse = chatClient2.prompt(message)
+                .call()
+                .chatResponse();
         String response = chatResponse.getResult().getOutput().getText();
 
-        System.out.println(chatResponse.getMetadata().getModel()); //model the chatcient is using
+        System.out.println(chatResponse.getMetadata().getModel()); //model the chatclient is using
 
         return ResponseEntity.ok(response);
     }
@@ -89,10 +91,16 @@ public class TeluskoController {
 
 /**
  * what are the other types of advisors?
+ * memory/ retry/
+ * something which is send to ai api with some advicesss..
+ *
  * MessageChatMemoryAdvisor (for structured histories), PromptChatMemoryAdvisor (for condensed text), and VectorStoreChatMemoryAdvisor (for semantic, long-term recall).
  * what is the difference between langchain and spring ai, is langchain part of spring ai?
  *  langchain is for python
  *  langchain4j is for java
- *  
+ *
  *  to implement langchain we need not using spring/apring ai. with normal java also we can do.
+ *
+ *
+ *
  * */

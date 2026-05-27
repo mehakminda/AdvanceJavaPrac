@@ -30,7 +30,7 @@ public class LaunchApp1 {
          Transaction transaction =  session.beginTransaction();
 
          //Create persistent object
-       /* Student st=new Student();
+        /*Student st=new Student();
         st.setId(1);
         st.setAge(30);
         st.setName("Mehak Minda");
@@ -41,7 +41,7 @@ public class LaunchApp1 {
         st.setId(2);
         st.setAge(30);
         st.setName("Mehak");
-        st.setCity("New York");
+        st.setCity("New York(NYC)");
 
         //perform persistence operation
         //session.update(st);

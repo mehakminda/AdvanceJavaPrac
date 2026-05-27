@@ -9,7 +9,7 @@ public class Password {
         System.out.println("Password obj has been created ");
     }
     public Password(String algo){
-     this.algo=algo;
+       this.algo=algo;
         System.out.println("The password has been created by "+algo);
     }
     public void disp(){
@@ -40,7 +40,8 @@ public class Password {
  Why this is incorrect / problematic
 
  1.@Bean methods are expected to return the bean instance. Here the method returns void, so it does not provide an object to register as a bean. In other words, this does not register a bean with the Spring context.
- 2. Creating the object with new (Password p = new Password("SHA1")) bypasses the Spring container — the created instance is not managed by Spring (no dependency injection, no lifecycle callbacks, no proxies/AOP enhancements).
+ 2. Creating the object with new (Password p = new Password("SHA1")) byp
+ asses the Spring container — the created instance is not managed by Spring (no dependency injection, no lifecycle callbacks, no proxies/AOP enhancements).
  3. If Password is already annotated with @Component (as in your project), then you already get a Spring-managed bean via component scanning. Trying to create another instance manually is redundant and can lead to confusion or duplicate bean definitions (depending on how you try to register it).
  4. Naming / style: GenerateAlgo starts with uppercase — Java conventions use camelCase for methods (e.g., generateAlgo()).
 

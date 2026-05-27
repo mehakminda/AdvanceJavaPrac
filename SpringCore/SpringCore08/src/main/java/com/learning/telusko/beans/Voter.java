@@ -9,7 +9,7 @@ import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
 
 @Component(value="voter")
-@PropertySource(value= "com/learning/telusko/commons/application.properties") //there is some data in some file, i want to use that data in this class
+@PropertySource(value= "application.properties") //there is some data in some file, i want to use that data in this class
 public class Voter {
 
     @Value("${voter.info.name}")
