@@ -1,0 +1,4 @@
+Write a Java Spring Boot REST endpoint that receives a list of order IDs as input and returns a summary (total amount, count, min/max order value) for those orders from a PostgreSQL database. Ensure input validation, efficient DB querying, and handle cases where some IDs do not exist.
+
+
+Write a Java Spring Boot REST endpoint that accepts a file upload (e.g. CSV) and processes its contents to batch-insert user records into a MySQL database. Ensure proper transaction management, input validation, and return appropriate HTTP response codes for success and failure cases.
