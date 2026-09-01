@@ -1,0 +1,68 @@
+test:
+Ensure input validation, efficient DB querying, and handle cases where some IDs do not exist.
+
+1. [] empty list : Triggers @NotEmpty
+2. [1,2,100] existent and non-existent order id's
+3. [100] non-existent order id's
+
+
+Verifying Efficient DB Querying:
+1. Check the Response Time (in Postman)
+2. Verify SQL Execution logs : spring.jpa.show-sql=true . Only 1 query should be triggered in console.
+
+
+Follow up questions:
+1. If the input list contains duplicate IDs, how should the logic handle it? :[1,2,1] duplicate orderId's
+
+The Solution: Use .stream().distinct() to de-duplicate the collection inside the service layer before executing the SQL query.Reasoning: If you pass duplicates ([101, 101]) into a native SQL WHERE id IN (101, 101) clause, PostgreSQL will still match and process the order 101 row only once. However, your input count (request.orderIds().size()) would say 2, but the DB count would return 1. If you don't deduplicate the input list first, your application will mistakenly flag 101 as a "missing ID" because the counts don't align.
+
+
+2.  If none of the passed IDs exist, what does your query return? How do you prevent errors?
+SQL aggregation on an empty or non-matching result set returns a single row where COUNT is 0, but SUM, MIN, and MAX are all NULL
+Use COALESCE(SUM(o.amount), 0) to guarantee a numeric fallback for the sum.
+
+3. How does your code protect against a Denial of Service (DoS) memory exploit?
+The Solution: Apply Validation Constraints and Payload Size Limits at the entryway.@Size(max = 1000): The request DTO should explicitly reject any list larger than a safe threshold before the service or database layer is ever invoked.
+Spring Boot Framework Limits: Configure server.max-http-request-header-size and strict Tomcat body limits to drop excessively large payloads at the network level before Java attempts to deserialize them into heap memory.
+
+4. Why is a POST preferred here over a standard GET request with query parameters?
+
+URL Length Limits: Browsers, proxies, and web servers (like Tomcat, Nginx) have strict URL length constraints (typically 2KB to 8KB). A long list of IDs in a GET query string (/summary?ids=1,2,3...) will cause a 414 URI Too Long error.
+
+Data Structure: POST allows sending clean, structured JSON payloads in the request body.Logging/Security: Query parameters are frequently logged in plain text by API gateways, load balancers, and internal network tools, which can expose internal sequence numbers or sensitive data. Request bodies are generally not logged.
+
+
+5. What specific index should be present on your orders table?
+The Solution: A primary key index on id is sufficient.
+
+Explanation: Because PostgreSQL already automatically creates a B-Tree index on the primary key (id), looking up rows by ID is highly efficient (\(O(\log N)\)). Since we need to pull the amount column anyway, a composite index on (id, amount) is unnecessary and wasteful, as the primary key index will pinpoint the exact rows instantly.
+
+
+
+6.  How can you get the statistics and the missing IDs in one single DB round-trip?
+The Solution: Use a VALUES expression or a Common Table Expression (CTE) to create a virtual table of the requested IDs on the fly, then perform a LEFT JOIN against the orders table.
+
+sqlWITH requested_ids(id) AS (
+  VALUES (101), (102), (103) -- Passed dynamically from Java
+)
+SELECT
+    SUM(o.amount) AS totalAmount,
+    COUNT(o.id) AS foundCount,
+    MIN(o.amount) AS minOrderValue,
+    MAX(o.amount) AS maxOrderValue,
+    -- Aggregate missing IDs into an array/string
+    STRING_AGG(CAST(r.id AS VARCHAR), ',') FILTER (WHERE o.id IS NULL) AS missingIds
+FROM requested_ids r
+LEFT JOIN orders o ON r.id = o.id;
+
+
+Why this works: The LEFT JOIN ensures rows are retained even if they don't exist in orders. The FILTER (WHERE o.id IS NULL) clause specifically gathers the IDs that failed to match.
+
+7.  If a user passes 50,000 IDs, how would you change your strategy?
+The Problem: Large IN clauses bloat the SQL query string, force the DB query optimizer to work harder, and can consume excessive database memory.
+
+The Solution: Implement batching or temporary tables.
+
+Batching: Split the 50,000 IDs into smaller chunks (e.g., chunks of 1,000 using Lists.partition from Guava or Apache Commons) in the service layer. Run the query for each batch and aggregate the sub-results in Java.
+
+Temp Tables / Bulk Insert: Insert the 50,000 IDs into a PostgreSQL temporary table (or a dedicated global staging table with a session/request ID) using a fast JDBC bulk copy (COPY command). Then, perform an inner join between the orders table and the temp table.

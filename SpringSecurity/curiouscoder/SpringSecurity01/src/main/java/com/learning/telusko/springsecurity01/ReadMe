@@ -1,0 +1,66 @@
+Basic Authentication:
+
+Client makes a call to server by passing username and password.
+Server then validates the credentials with db.
+For every subsequent request username and password needs to be passed.
+
+
+Session Based Authentication:
+
+Client makes a call to server by passing username and password.
+Server fetches the credentials from db and creates a session inside the server(may be tomcat)
+server sends the sessionid back to the client
+and on every subsequent request the client just sends the sessionid to server.
+(server need not make db call everytime, session id is enough)
+slightly better than basic auth
+server is maintaining state(session is stored somewhere on server either on redis/db..)
+
+sessionid is random identifier it doesnt contain user information(username, role, permission, session expiry time)
+
+
+JWT
+Why should server remember anything at all?
+jwt token all user details
+no session lookup/ no server memory/no redis lookup/no database call
+JWT is stateless. as server not maintain any session
+Signature verification is done.
+
+JWT token : header, payload, signature
+header and payload re base64encoded.
+the algo inside header is for signature
+
+signature: encoded header +. + encoded payload + secret key
+
+Signature = HMACSHA256(Base64UrlEncode(header)+"."+ Base64UrlEncode(payload), secretKey)
+
+JWT Flow:
+1. token generation : client sends username/password to the server
+ server makes db call and fetches the credentials, server validates these credentials
+ the server then generates the jwt token containing user details(these are called as claims)
+ the token is then signed using a secret key
+ the token is then sent back to client
+2. client send jwt :from subsequent request client sends the JWT token in Auth header and not username/password
+3. Token validation: On server we verify the JWT signature using the same secret key.
+    If the signature is valid, the token is trusted and the claims are extracted from payload
+4. Access Granted : Based on the extracted claims, the server authorizes the request and processes the API
+    so no db calls are required for authentication in every request.
+
+JWT is not part of spring security
+
+
+
+
+Some questions:
+
+Jsessionid and jwt token where are they stored , as a cookie?
+
+
+JSESSIONID:
+Stored in : Browser Cookies (Mandatory default; defaults to URL rewriting only if cookies are disabled)
+How is it sent to server: Automatically sent by the browser in the Cookie header on every request.
+
+JWT:
+Stored in : Developer's Choice: Browser Cookies, localStorage, sessionStorage
+How is it sent to server:
+• If in Cookies: Automatically sent.
+• If in Storage: Manually attached via JavaScript to the Authorization: Bearer <token> header.
